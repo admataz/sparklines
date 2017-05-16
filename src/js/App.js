@@ -17,14 +17,18 @@ class App extends React.Component{
     this.setState({inputValue: numOnly});
   }
 
-
+  componentWillMount(){
+    if(this.props.defaultInput){
+      this.setState({inputValue: this.props.defaultInput});
+    }
+  }
 
 
   render(){
       return(
         <div>        
-        <textarea name="" id="" cols="30" rows="10" value={this.state.inputValue} onChange={this.parseInput} />
-        <SparkLine plotPoints={this.state.inputValue} width="1000" height="200"/>
+        <div className="col"><textarea name="" id="" cols="30" rows="10" value={this.state.inputValue} onChange={this.parseInput} /></div>
+        <div className="col"><SparkLine plotPoints={this.state.inputValue} width="200" height="40"/></div>
         </div>
       )
     }
